@@ -1,0 +1,233 @@
+{
+  "main": {
+    "id": "7a69e8e338f2adb6",
+    "type": "split",
+    "children": [
+      {
+        "id": "3555b9d0bafad74b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b47fb03b46b8b765",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "frontend/html,css,js.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "html,css,js"
+            }
+          },
+          {
+            "id": "d22e62468c3e7963",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "other tools/Git and Github.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Git and Github"
+            }
+          },
+          {
+            "id": "f85133bbd817345f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "other tools/Git and Github.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Git and Github"
+            }
+          },
+          {
+            "id": "30ee4c4a8c311964",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "other tools/Git and Github.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Git and Github"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "773c2406a4469ffd",
+    "type": "split",
+    "children": [
+      {
+        "id": "d5781e138b37fb79",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8d4d5dfc93817237",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "4b29d25e4cd70be9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "0e722df29d788581",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 214.50260543823242
+  },
+  "right": {
+    "id": "629026b24b902fff",
+    "type": "split",
+    "children": [
+      {
+        "id": "77936778bdd56f95",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0880db8e7333636e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "PowerBI/PowerBIBasics.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for PowerBIBasics"
+            }
+          },
+          {
+            "id": "6f1aaafb8abe68f9",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "PowerBI/PowerBIBasics.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from PowerBIBasics"
+            }
+          },
+          {
+            "id": "c890e215b283aac6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "9c2c336a51faf065",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "other tools/Git and Github.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Git and Github"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 359.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "f85133bbd817345f",
+  "lastOpenFiles": [
+    "frontend/Javascript.md",
+    "other tools/Git and Github.md",
+    "frontend/html,css,js.md",
+    "CodingWithAI/Cursor.md",
+    "PowerBI/PowerBIBasics.md",
+    "CodingWithAI",
+    "C Sharp(backend)/CSharp Basics.md",
+    "frontend/React.md",
+    "other tools",
+    "frontend",
+    "Templates/folding.md",
+    "[.md",
+    "Templates/quote with yellow background.md",
+    "Templates/folding with code.md",
+    "Welcome.md",
+    "Templates",
+    "pictures/Pasted image 20241024191143.png",
+    "pictures/Pasted image 20241025182552.png",
+    "pictures",
+    "Pasted image 20241024180428.png",
+    "PowerBI",
+    "C Sharp(backend)"
+  ]
+}

@@ -1,0 +1,14 @@
+d:\Users\Administrator\Desktop\csharp\first\first\obj\Debug\net8.0\first.GeneratedMSBuildEditorConfig.editorconfig
+d:\Users\Administrator\Desktop\csharp\first\first\obj\Debug\net8.0\first.AssemblyInfoInputs.cache
+d:\Users\Administrator\Desktop\csharp\first\first\obj\Debug\net8.0\first.AssemblyInfo.cs
+d:\Users\Administrator\Desktop\csharp\first\first\obj\Debug\net8.0\first.csproj.CoreCompileInputs.cache
+d:\Users\Administrator\Desktop\csharp\first\first\bin\Debug\net8.0\first.exe
+d:\Users\Administrator\Desktop\csharp\first\first\bin\Debug\net8.0\first.deps.json
+d:\Users\Administrator\Desktop\csharp\first\first\bin\Debug\net8.0\first.runtimeconfig.json
+d:\Users\Administrator\Desktop\csharp\first\first\bin\Debug\net8.0\first.dll
+d:\Users\Administrator\Desktop\csharp\first\first\bin\Debug\net8.0\first.pdb
+d:\Users\Administrator\Desktop\csharp\first\first\obj\Debug\net8.0\first.dll
+d:\Users\Administrator\Desktop\csharp\first\first\obj\Debug\net8.0\refint\first.dll
+d:\Users\Administrator\Desktop\csharp\first\first\obj\Debug\net8.0\first.pdb
+d:\Users\Administrator\Desktop\csharp\first\first\obj\Debug\net8.0\first.genruntimeconfig.cache
+d:\Users\Administrator\Desktop\csharp\first\first\obj\Debug\net8.0\ref\first.dll
