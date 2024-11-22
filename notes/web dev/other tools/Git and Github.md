@@ -85,7 +85,11 @@ git commit上传快照之后就可以打开github了
 		<div><img src="https://ooo.0x0.ooo/2024/11/13/OHmrvc.png" alt="OHmrvc.png" border="0" width = 1500></div>
 		<div><img src="https://ooo.0x0.ooo/2024/11/13/OHmAdr.png" alt="OHmAdr.png" border="0" width = 1500></div>
 		<div><img src="https://ooo.0x0.ooo/2024/11/13/OHmZaM.png" alt="OHmZaM.png" border="0"></div>
-		<p>然后选择https,复制出现的命令到vscode,运行即可</p>
+		<p>然后选择https,复制出现的命令到vscode,运行即可<br>
+		git remote add origin https://github.com/Nikkei001/CSharp.git<br>
+		git branch -M main<br>
+		git push -u origin main
+		</p>
 	</pre>
 </details>
 
@@ -107,3 +111,8 @@ ty directory. //=>
 		<img src="https://ooo.0x0.ooo/2024/11/20/OHEEYj.png" alt="OHEEYj.png" border="0">
 	</pre>
 </details>
+
+## 理解常用的命令及其原理
+
+
+

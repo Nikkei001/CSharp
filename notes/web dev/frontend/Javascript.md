@@ -1,6 +1,31 @@
 基于Eloquent JavaScript(ELJS)
 基于ModernJavaScript(MJS)
 
+## additional tips
+
+### vscode
+
+#### 在vscode运行js代码(涉及CD命令)
+
+1. 安装nodejs
+2. 打开vscode终端,用`npm -v`和`node -v`检查是否安装成功,如果vscode已经是打开状态,关掉重启再运行
+3. 终端运行`cd + 代码所在的路径`
+	1. cd --help查看帮助
+	2. cd或cd ~ 快速返回到用户的主目录
+	3. cd ..  当前目录的父目录(转到上一级目录)
+		- 例如
+		- `PS D:\Users\Administrator\Desktop\csharp\frontend_JavaScript> cd ..
+		- `PS D:\Users\Administrator\Desktop\csharp`
+	4. cd .  表示当前目录(可以转到下一级目录)
+		- 例如下面的示例转到下一级目录并运行js代码
+		- `PS D:\Users\Administrator\Desktop\csharp> cd ./frontend_JavaScript`
+		- `PS D:\Users\Administrator\Desktop\csharp\frontend_JavaScript> node ELJS1.JS`
+	5. 使用绝对路径和相对路径
+		- `cd D:\Users\Administrator\Desktop\csharp\first`(绝对路径)
+		- `D:\Users\Administrator\Desktop\csharp\first> cd ..`(返回上一级目录)
+		- `D:\Users\Administrator\Desktop\csharp> cd first`(相对路径)
+		- `D:\Users\Administrator\Desktop\csharp\first> `(转到了下一级目录)
+
 # 作者的建议和书的架构(ELJS)
 
 尽量不要只浏览示例，而是要认真阅读并理解它们。 在真正写出可行的解决方案之前，不要认为自己已经理解了它们。 我建议你在实际的 JavaScript 解释器中尝试练习的解决方案。 这样，你就能立即得到反馈，知道你所做的是否有效，而且我希望，你会有尝试和超越练习的欲望。 在浏览器中阅读本书时，你可以通过点击所有示例程序来编辑（和运行）它们。 
@@ -29,6 +54,50 @@
 NaN 表示 "不是一个数"，尽管它是一个数字类型的值。 例如，当你尝试计算 0 / 0（零除以零）、Infinity - Infinity 或任何其他不产生有意义结果的数值运算时，都会得到这样的结果。
 
 #### 字符串(Strings)
+
+字符串也是由bit构建的,每个字符都有对应的数字,字符串是一串数字,每个字符串元素使用16bit,部分字符串占据了两个字符位置
+字符串可以用\`\`, \"\", \'\'包围
+使用单引号或双引号编写的字符串的行为非常相似，唯一的区别在于需要在字符串内部转义哪种类型的引号。 反引号字符串(也就是"\`...\`",通常称为*template literals*,模板字面量), 除了可以跨行外，它们还可以嵌入其他值。${}内部的代码将会被计算并转为字符串,例如
+\`half of 100 is ${100 / 2}\` 结果是"half of 100 is 50"
+转义字符"\\"表示该字符串有特殊含义,适用于引号中带有引号的情况
+转义字符"\t"代表制表符,"\n"代表换行
+字符串不能做算数运算,+运算符用于连接字符串
+
+#### 运算符
+
+有些运算符使用单词表示, 例如`typeof`,这是一个一元运算符(*unary operators*), 它只对一个值计算, 而一般的运算符对两个值计算, 是二元运算符(*binary operators*),"-"可以是一元或二元运算符
+
+#### 布尔值(boolean)
+
+只有两个值, TRUE和FALSE
+
+产生布尔值的方法
+可以通过比较两个值产生布尔值,例如
+`console.log("Aardvark" < "Zoroaster")`
+常见的比较运算符<,>,>=,<=,!=,==
+
+逻辑运算符产生布尔值,and(&&) or(||) not(!)等等
+优先级
+||<&&<比较运算符<其他
+
+有一种三元运算符也返回布尔值
+格式:condition ? expression1 : expression2
+condition为真则返回expression1否则返回expression2
+这是唯一的三元运算符,也叫条件运算符(_conditional operator_)
+
+#### 空值
+
+语言中的许多操作都不会产生有意义的值，产生未定义的值只是因为它们必须产生一些值。
+有`null`和`undefined`两个值, 用来表示没有有意义的值。 它们本身也是值，但不携带任何信息。
+`undefined`和`null`之间的含义差异是JavaScript设计中的一个意外，在大多数情况下**并不重要**。 如果您确实需要使用这些值，我建议您将它们视为可以互换的值。
+
+#### 类型隐式转换
+
+当两个值相同时，你应该得到 true,**NaN 的情况除外**, 两边是null或者undefined其中之一时也是true。 但当类型不同时，JavaScript 会使用一套复杂而混乱的规则来决定如何处理。
+
+使用"\=\=\="和"!\=\=\="两个运算符比较两边的值不会进行自动转换, 是作者推荐的用法
+
+#### 逻辑运算符的短路(short-circuiting)
 
 
 

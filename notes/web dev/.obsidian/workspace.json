@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "other tools/Git and Github.md",
+                "file": "frontend/Javascript.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Git and Github"
+              "title": "Javascript"
             }
           },
           {
@@ -55,16 +55,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "other tools/Git and Github.md",
-                "mode": "preview",
+                "file": "frontend/Javascript.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Git and Github"
+              "title": "Javascript"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -182,10 +182,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "other tools/Git and Github.md"
+                "file": "frontend/Javascript.md"
               },
               "icon": "lucide-list",
-              "title": "Outline of Git and Github"
+              "title": "Outline of Javascript"
             }
           }
         ],
@@ -205,11 +205,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f85133bbd817345f",
+  "active": "30ee4c4a8c311964",
   "lastOpenFiles": [
-    "frontend/Javascript.md",
-    "other tools/Git and Github.md",
     "frontend/html,css,js.md",
+    "Debug/Debug_backend.md",
+    "Debug/Debug_frontend.md",
+    "frontend/Javascript.md",
+    "Debug",
+    "other tools/Git and Github.md",
     "CodingWithAI/Cursor.md",
     "PowerBI/PowerBIBasics.md",
     "CodingWithAI",
