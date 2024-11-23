@@ -33,3 +33,5 @@ for (let num = 1; num <= 4; num++) {
 } // => 1, 3, 4
 
 console.log("=".repeat(100));
+
+
