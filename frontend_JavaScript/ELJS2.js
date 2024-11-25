@@ -69,18 +69,36 @@ for (let n = 1; n <= 100; n++) {
 
 console.log("=".repeat(100));
 
-// 输出一个棋盘,找规律,注意运算符的优先级
+// 输出一个棋盘,找规律,注意运算符的优先级,注意console.log(rst);rst += "\n";两句的顺序
 for (let row = 1; row <= 8; row++) {
     let rst = "";
     for (let column = 1; column <= 8; column++) {
         if ((row + column) % 2 === 0) rst += " ";
-        if ((row + column) % 2 !== 0) rst += "#";
+        else rst += "#";
     }
-    rst += "\n";
     console.log(rst);
+    rst += "\n"; 
 }
 
 
+console.log("=".repeat(100));
 
+// 作者解法
+let size = 8;
+
+let board = "";
+
+for (let y = 0; y < size; y++) {
+  for (let x = 0; x < size; x++) {
+    if ((x + y) % 2 == 0) {
+      board += " ";
+    } else {
+      board += "#";
+    }
+  }
+  board += "\n";
+}
+
+console.log(board);
 
 
