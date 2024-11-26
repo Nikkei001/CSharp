@@ -142,7 +142,7 @@ expression相当于一个句子的**片段**, 而statements相当于**完整的�
 这种程序运行后不会有任何事情发生, 但有些statements可能会在屏幕上产生内容, 或者改变机器的状态从而影响后面的statements, 这种变化被称为副作用(*side effects*).
 作者建议每个statements结尾都带上分号( ; ), 因为省略分号的规则很复杂, 容易出错
 
-### 绑定或变量(bindings)
+### 绑定, 也叫变量(bindings)
 
 *binding*是为了获取和保存值的, 其中, *keyword*表示将要定义一个binding, 后面跟一个binding的名称, 如果想要赋值, 可以加上"=", 和一个expression
 
@@ -339,4 +339,33 @@ bindings可用于将数据片段归档到一个名称下，并可用于跟踪程
 functions是封装程序的特殊值。(Functions are special values that encapsulate a piece of program. ) 您可以通过编写 functionName(argument1, argument2) 来调用它们。这种函数调用是一种expression，可以产生一个值。
 
 ## 函数
+
+函数的目的是给子程序(subprograms)一个名称, 并使这些子程序相互隔离
+
+### 定义函数
+
+函数的结构
+```js
+function name(params) {
+	// 函数体
+};
+```
+函数由keyword `function`开头
+
+函数可以有一个或多个参数(*parameters*), 也可以没有参数
+
+参数后面跟着函数体(*body*), 包含了函数被调用后会执行的statements, 就算只有一个statements, body也必须用{}封装
+
+函数可以把名字写在前面或者后面
+
+函数有return语句时可以返回一个值, 当return后面什么都没有会返回`undefined`, 完全没有return语句会返回一个副作用, 例如console.log(...), 也会返回`undefined`
+
+传入函数的parameters就像常规的bindings, 但是他们的值是函数的调用者给定的, 而不是函数本身包含的代码给定的
+
+### 绑定和作用域(bindings and scopes)
+
+
+
+
+
 
