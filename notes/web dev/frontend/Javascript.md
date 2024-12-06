@@ -344,27 +344,232 @@ functions是封装程序的特殊值。(Functions are special values that encaps
 
 ### 定义函数
 
+#### 传统的定义形式
+
 函数的结构
 ```js
-function name(params) {
+
+const functionName = function(x) {
 	// 函数体
 };
 ```
+函数的bindings**通常**只是作为程序特定部分的名称。 这种bindings只定义一次，永不更改。 这就很容易混淆函数及其bindings。
+
+但两者是不同的。 函数值(function value)可以做其他值可以做的所有事情--你可以在任意expressions中使用它，而不仅仅是调用它。 你可以将function value存储在一个新的binding，也可以将它作为参数传递给函数，等等。 后续我们将讨论通过将function value传递给其他函数可以实现的有趣功能。
+
+同样，保存函数的binding仍然只是一个普通的binding，如果不是常量，也可以赋予一个新值.
+
 函数由keyword `function`开头
 
-函数可以有一个或多个参数(*parameters*), 也可以没有参数
+函数可以有一个或多个参数(*parameters*), 也可以没有参数, 传入函数的parameters就像常规的bindings, 但是他们的值是函数的调用者给定的, 而不是函数本身包含的代码给定的, **在JS中, 给函数传入的参数过多, 则多出来的参数会被忽略, 如果传入的参数过少, 缺失的参数会设定为`undefined`**
+
+参数可以是可选的, 称为可选参数(*optional arguments*), 格式如下
+`function name(parameter, parameter2 = expression) {...}` 
+可选参数在没有给定值的时候, `=`后面的expression将取代参数
+
+==下一章将介绍一种方法，让函数体可以获取传递给它的整个参数列表。 这种方法非常有用，因为它允许函数接受任意数量的参数。 例如，console.log 就能做到这一点==
 
 参数后面跟着函数体(*body*), 包含了函数被调用后会执行的statements, 就算只有一个statements, body也必须用{}封装
 
-函数可以把名字写在前面或者后面
-
 函数有return语句时可以返回一个值, 当return后面什么都没有会返回`undefined`, 完全没有return语句会返回一个副作用, 例如console.log(...), 也会返回`undefined`
 
-传入函数的parameters就像常规的bindings, 但是他们的值是函数的调用者给定的, 而不是函数本身包含的代码给定的
+#### 函数声明(function declaration)
 
-### 绑定和作用域(bindings and scopes)
+函数的定义还有另一种略微简短的形式,被称作函数声明(_function declaration_), 形式如下
+
+```js
+function square(x) {
+	return x * x;
+}
+```
+这种function declaration不需要在后面加分号
+
+function declaration**不属于常规的从上到下的控制流**。 从概念上讲，它们被移到其scope([[Javascript#函数#变量和作用域(bindings and scopes)]])的顶部，并可被该scope中的所有代码使用。 这种方法有时很有用，因为它提供了一种自由，可以按照看起来最清晰的方式排列代码，而不必担心在使用之前必须定义所有函数。
+
+```js
+console.log("The future says:", future());
+
+let future = function() {
+    return "You'll never have flying cars";
+};
+// => 报错:ReferenceError: Cannot access 'future' before initialization
+```
+上面的代码改为function declaration则可以运行
+```js
+console.log("The future says:", future());
+
+function future() {
+  return "You'll never have flying cars";
+}
+// => The future says: You'll never have flying cars
+```
+#### 箭头函数(arrow functions)
+
+还有一种定义函数的方式叫箭头函数(*arrow functions*)
+
+```js
+let functionName = (parameters) => {
+	// function body
+}
+```
+当只有一个参数名时，可以省略参数列表周围的括号。参数列表也可以是空的; 
+
+如果函数体是一个单独的表达式，而不是括号中的代码块，函数将返回该表达式。 因此，这两个 `square` 的函数定义做的是同一件事：
+
+```js
+const square1 = (x) => { return x * x; };
+const square2 = x => x * x;
+```
 
 
+### 变量和作用域(bindings and scopes)
+
+每个bindings都有作用域(scope), scope就是bindings在程序中可见的部分, 对于定义在**函数, blocks, modules**之外的bindings, 可以在程序的任何地方被引用, 这些变量称作全局(global)变量
+
+为函数参数创建的bindings或在函数内部声明的bindings只能在该函数中引用，因此被称为local bindings。 **每次调用函数时，都会创建这些bindings的新instances**。 这就在一定程度上实现了函数之间的隔离.
+
+<blockquote style="background-color: #fff8dc; padding: 15px; border-radius: 5px; border-left: 4px solid #ffd700;"> 
+<b>每次调用函数都会创建新的instances, 意味着每次函数执行时，它的参数和内部变量都是全新的，与上一次函数调用时创建的变量是不同的。这也意味着函数内部的变量不会保留上一次函数调用的状态</b>
+</blockquote>
+
+使用 `let` 和 `const` 声明的bindings实际上是声明**所在代码块**的local bindings，因此如果在循环中创建bindings，循环前后的代码都无法 "看到 "它。 在 **2015 年以前**的 JavaScript 中，**只有函数**才会创建新的作用域，因此使用 `var` 关键字创建的旧式bindings在其所在的整个函数中都是可见的，如果不在函数中，则在global scope中也是可见的。
+
+```js
+const halve = function(n) {
+  return n / 2;
+};
+
+let n = 10;
+console.log(halve(100));
+// → 50
+console.log(n);
+// → 10
+```
+每个作用域都可以 "向外看 "其周围的作用域, 如果多个绑定具有相同的名称, 只能看到最内层的绑定。 例如，当函数 halve 内的代码引用 n 时，它看到的是自己的 n，而不是全局的 n。
+
+JavaScript 不仅区分global bindings和local bindings。 块和函数可以在其他块和函数内部创建，从而产生多种程度的locality。
+
+当存在嵌套的scope时, 内层的scope可以读取到外层scope中的bindings, 反过来则不成立.
+
+```js
+const hummus = function(factor) {
+    const ingredient = function(amount, unit, name) {
+      let ingredientAmount = amount * factor;
+      if (ingredientAmount > 1) {
+        unit += "s";
+      }
+      console.log(`${ingredientAmount} ${unit} ${name}`);
+    };
+    ingredient(1, "can", "chickpeas");
+};
+
+hummus(2) // => 2 cans chickpeas
+
+// factor可以被内层函数ingredient读取到
+```
+
+程序块内可见的bindings集合由程序块在程序文本中的位置决定。 每个local scope都能看到包含它的所有local scope，而所有scope都能看到glocal scope。 这种binding visibility的方法称为词法作用域(*lexical scoping*)。
+
+### 调用栈(call stack)
+
+计算机存储调用发生时的上下文的地方就是调用栈(*call stack*)。 每次调用函数时，当前上下文都会存储在栈顶部。 函数返回时，会移除顶部上下文，并使用该上下文继续执行。
+
+存储这个栈需要计算机内存的空间。 如果栈过大，计算机就会出现 "栈空间不足 "或 "递归过多 "等故障信息。
+
+示例
+```js
+function greet(who) {
+    console.log("Hello " + who);
+}
+greet("Harry");
+console.log("Bye");
+```
+该程序的运行过程大致如下：调用 greet 会导致控制权**跳转**到该函数的起始行（第 2 行）。 该函数调用 console.log，console.log 接管控制，执行其工作，然后将控制**返回到第 2 行**。 在那里，它到达了 greet 函数的末尾，**因此返回到调用它的地方--第 4 行**。 之后的一行再次调用 console.log。 返回后，程序结束。
+
+执行过程可以表示为
+not in function
+  in greet
+    in console.log
+  in greet
+not in function
+  in console.log
+not in function
+
+### 闭包(closure)
+
+将函数视为值的功能，加上每次调用函数时都会重新创建local bindings这一事实([[Javascript#变量和作用域(bindings and scopes)]])，带来了一个有趣的问题： 当创建local bindings的函数调用不再有效时，local binding会发生什么变化？
+
+local bindings在每次调用中都是重新创建的，不同的调用不会影响彼此的local bindings。 **这种**引用外层作用域中local bindings的特定实例的**特性被称为closure**。 引用了周围local scopes中的bindings的**函数**称为**a closure**。 这种行为不仅让你不必担心绑定的生命周期，还能以一些创造性的方式使用函数值。
+
+示例
+```js
+function multiplier(factor) {
+	return number => number * factor;
+}
+
+let twoTimes = multiplier(2);
+let threeTimes = multiplier(3); // 重新创建了factor, 并被内层的number函数引用
+
+console.log(twoTimes(5)); // => 10
+console.log(threeTimes(5)); // => 15
+```
+这样思考程序需要一些练习。 一个好的思维模型是将函数值视为两部分, 一是**函数体中的代码**,二是**创建函数的环境**。 **调用函数时，函数体看到的是创建它的环境**，而不是调用它的环境。
+
+在上面的示例中，调用 multiplier 时会创建一个环境，其中的factor参数绑定为 2和3。 它返回的函数值存储在 twoTimes和threeTimes 中，会记住这个环境，因此调用时会将其参数分别乘以 2和3。
+
+### 递归(recursion)
+
+调用自身的函数称为递归函数.
+
+通常递归比循环慢, 但递归并不总是循环的低效替代品。 有些问题用递归确实比用循环更容易解决。 **这些问题通常需要探索或处理多个 "分支"，而每个 "分支 "又可能分支出更多的 "分支"**。
+
+### Growing Functions--删除代码中的冗余部分
+
+将函数引入程序或多或少有两种自然的方式。
+
+第一种是当你发现自己**多次编写类似的代码**时。 你最好不要这样做，因为代码越多，就意味着隐藏错误的空间越大，也意味着人们在理解程序时需要阅读的材料越多。 因此，**你要把重复的功能，为它找到一个好名字，并把它放到一个函数中**。
+
+第二种方法是，你发现自己需要一些尚未编写的功能，而这些功能听起来应该有自己的函数。 您可以先命名该函数，然后编写其主体。 甚至可能在真正定义函数之前，就已经开始编写使用函数的代码了。
+
+为一个函数找到一个好名字有多难，就能很好地说明你要包装的概念有多清晰。 让我们来看一个例子。
+
+### 函数和副作用(side effects), 以及纯函数(pure functions)
+
+函数可大致分为为副作用而调用的函数和为返回值而调用的函数（当然也可能既有副作用又有返回值）。
+
+与直接执行副作用的函数相比，创建值的函数更容易以新的方式进行组合。
+
+纯函数(*pure functions*)是一种特殊的产生值的函数，**它不仅没有副作用，也不依赖于其他代码的副作用**，例如，它不会读取其值可能会改变的global bindings。 
+
+纯函数有一个令人愉快的特性，即当**调用相同的参数时，它总是产生相同的值**（**而不做其他任何事情**）。 **对这种函数的调用可以用它的返回值来代替，而不会改变代码的含义。** 
+
+当您不确定纯函数是否正常工作时，您可以通过**简单地调用该函数**来测试它，并知道如果它在该上下文中正常工作，那么它在任何上下文中都会正常工作。 非纯函数往往需要更多的脚手架来测试。
+
+示例
+
+纯函数的示例
+```js
+// 纯函数 
+function add(a, b) { 
+	return a + b; // 返回值仅依赖于输入参数 
+} 
+
+console.log(add(2, 3)); // 输出: 5 
+console.log(add(2, 3)); // 输出: 5（相同输入，始终相同输出）
+```
+
+非纯函数的示例
+```js
+let counter = 0; // 不纯函数 
+
+function incrementCounter() { 
+	counter += 1; // 修改了外部变量 counter 
+	return counter; 
+} 
+
+console.log(incrementCounter()); // 输出: 1 
+console.log(incrementCounter()); // 输出: 2（每次调用结果不同）
+```
 
 
 
