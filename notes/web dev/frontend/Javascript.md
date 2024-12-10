@@ -571,6 +571,152 @@ console.log(incrementCounter()); // 输出: 1
 console.log(incrementCounter()); // 输出: 2（每次调用结果不同）
 ```
 
+## 数组和对象
+
+### 数组
+
+数组是JS用来存储数值序列的数据类型, 其写法是在方括号之间用逗号分隔的值列表。数组的索引从0开始, 用方括号包含索引.
+
+### 属性(properties)
+
+几乎所有 JavaScript 值都有属性。 空值和未定义值是例外。 如果尝试访问这些非值的属性，就会出现错误.
+
+例如, `Math.max`访问的是Math对象的max属性
+
+JavaScript 中访问属性的两种主要方式是使用点和方括号。 value.x 和 value[x] 都可以访问 value 上的一个属性，但不一定是同一个属性。 两者的区别在于如何解释 x。 使用圆点时，圆点后的单词就是属性的字面名称。 使用方括号时，将对括号之间的表达式进行求值，以获得属性名称。 value.x 获取名为 "x "的值的属性，而 value[x] 则**获取名为 x 的变量的值，并将其转换为字符串**作为属性名。
+
+如果你知道你感兴趣的属性叫做 color，你就会说 value.color。 如果要提取由绑定 i 中的值命名的属性，则需要输入 value[i]。 属性名是字符串。 它们可以是任何字符串，但点符号只适用于看起来像有效绑定名称的名称--以字母或下划线开头，且只包含字母、数字和下划线。 如果要访问名为 2 或 John Doe 的属性，必须使用方括号：value[2] 或 value["John Doe"]。
+
+数组中的元素存储为数组的属性，**使用数字作为属性名**。 **由于数字不能使用点符号，而且通常要使用保存索引的绑定，因此必须使用括号符号来获取它们**。
+
+就像字符串一样，数组也有一个`length`属性，告诉我们数组有多少个元素。
+
+### 方法(methods)
+
+除了长度属性外，字符串和数组值都包含一些存放**函数值**的属性。
+```js
+let doh = "Doh";
+console.log(typeof doh.toUpperCase);
+// → function
+console.log(doh.toUpperCase());
+// → DOH
+```
+例如, 每个字符串都有一个 toUpperCase 属性。 调用时，它会返回一个字符串副本，其中所有字母都已转换为大写。 还有一种 toLowerCase 方法是相反的。
+有趣的是，尽管对 toUpperCase 的调用没有传递任何参数，但函数以某种方式访问了字符串 "Doh"，也就是我们调用的属性值。 ==我们将在第 6 章中了解其工作原理。==
+
+**包含函数的属性**一般称为其所属值的方法，如 "`toUpperCase` 是字符串的一个方法"。
+
+数组也有自己的一些方法, 如push, pop等等, 这些是对栈(stack)的常规操作
+
+### 对象(objects)
+
+对象类型的值是属性的任意集合。 创建对象的一种方法是使用大括号作为表达式。
+
+在大括号内，你可以写出一个用逗号分隔的属性列表。 每个属性都有一个名称，后面跟一个冒号和一个值。 当一个对象被写成多行时，按本示例所示缩进有助于提高可读性。 **名称不是有效变量名称或有效数字的属性必须加引号**:
+
+示例
+```js
+let descriptions = {
+  work: "Went to work",
+  "touched tree": "Touched a tree"
+};
+```
+这意味着大括号在 JavaScript 中具有两种含义。 在statements的开头，它们表示一个语句块(block of statements)的开始。 在任何其他位置，它们都描述一个对象。 
+
+<blockquote style="background-color: #fff8dc; padding: 15px; border-radius: 5px; border-left: 4px solid #ffd700;"> 
+大括号作为代码块的开始,例如if语句、for循环、while循环等结构中
+</blockquote>
+
+幸运的是，在statements的开头使用括号(braces)中的对象很少有用，因此这两者之间的歧义问题不大。 **唯一会出现这种情况的是**，当您想从一个arrow function中返回一个对象时--您不能写 n => {prop: n}，**因为大括号会被解释为函数体**。 **相反，你必须在对象周围加上一组圆括号(parenthesis)，以明确它是一个表达式**。
+
+读取不存在的属性会得到`undefined`。
+
+可以使用 = 运算符为属性表达式(property expression)赋值。 如果属性值已经存在，则将替换该属性值；如果不存在，则在对象上创建一个新属性。
+
+对象的属性掌握值, 但其他变量和属性可以有相同的值, **可以把对象想象成一条章鱼, 每根触手上都写着属性的名字**
+
+`delete`是一个一元操作符, 可以从对象中删除属性, 不常用, 格式`delete anObject.aProperty;`这种操作相当于切断了章鱼的触手
+
+`in`可以判断一个属性是否存在于对象, 如果一个属性被设置为`undefined`, 返回`true`, 如果属性被删除, 返回`false`, 这是未定义和不存在的区别
+
+示例
+```js
+let anObject = {left: 1, right: 2};
+console.log(anObject.left);
+// → 1
+delete anObject.left;
+console.log(anObject.left);
+// → undefined
+console.log("left" in anObject);
+// → false
+console.log("right" in anObject);
+// → true
+```
+要想知道一个对象有哪些属性，可以使用 Object.keys 函数。 给该函数一个对象，它将返回一个字符串数组--对象的属性名称：
+```js
+console.log(Object.keys({x: 0, y: 0, z: 2}));
+// → ["x", "y", "z"]
+```
+有一个 Object.assign 函数可以将一个对象的所有属性复制到另一个对象中：
+```js
+let objectA = {a: 1, b: 2};
+Object.assign(objectA, {b: 3, c: 4});
+console.log(objectA);
+// → {a: 1, b: 3, c: 4}
+```
+因此，**数组只是一种专门用于存储事物序列的特化的对象(Arrays, then, are just a kind of object specialized for storing sequences of things.)**。 如果对 typeof [] 进行运算，就会产生 "对象"。 你可以把数组想象成扁长的章鱼，所有触角都整齐地排成一行，并用数字标注。
+
+在实际开发中, 对象数组, 也就是数组的元素全部是对象的数组, 是很常见的
+例如 商品列表
+```js
+const products = [
+    { id: 101, name: "Product A", price: 19.99, stock: 100 },
+    { id: 102, name: "Product B", price: 29.99, stock: 50 },
+    // 更多商品...
+];
+```
+
+### 可变性
+
+我们看到，对象的值是可以修改的。 **前面几章讨论过的数值类型，如数字、字符串和布尔值，都是不可变的--不可能改变这些类型的值**。 你可以将它们组合起来并从中导出新的值，但当你取一个特定的字符串值时，该值将始终保持不变。 字符串中的文本无法更改。 如果您有一个包含 "cat "的字符串，其他代码就不可能更改字符串中的某个字符，使其拼写成 "rat"。
+
+对象的工作方式不同。 您可以更改它们的属性，从而使一个对象的值在不同时间具有不同的内容。
+
+当我们有 120 和 120 这两个数字时，无论它们是否指向相同的物理位，我们都可以认为它们是相同的数字。 对于对象，有两个对同一对象的引用(two references to the same object)与有两个包含相同属性的不同对象(two different objects that contain the same properties)是不同的。 请看下面的代码：
+
+```js
+let object1 = {value: 10};
+let object2 = object1;
+let object3 = {value: 10};
+
+console.log(object1 == object2);
+// → true
+console.log(object1 == object3);
+// → false
+
+object1.value = 15;
+console.log(object2.value);
+// → 15
+console.log(object3.value);
+// → 10
+```
+object1 和 object2 这两个bindings掌握的是同一个对象，这就是为什么改变 object1 也会改变 object2 的值。 可以说它们具有相同的身份。 binding object3 指向一个不同的对象，它最初包含与对象 1 相同的属性，但过着独立的生活。
+
+binding也可以是可变的或恒定的，但这与其值的行为方式是分开的。 尽管数字值不会改变，但您可以使用 let 绑定通过改变绑定所指向的值来跟踪不断变化的数字。 同样，虽然对象的 const 绑定本身不会改变，并且会继续指向同一个对象，但**该对象的内容可能会改变**。
+
+```js
+const score = {visitors: 0, home: 0};
+// This is okay
+score.visitors = 1;
+// This isn't allowed
+score = {visitors: 1, home: 1};
+```
+使用 JavaScript 的 == 运算符比较对象时，它是通过同一性进行比较的：只有当两个对象的值完全相同时，它才会返回 true。 比较不同的对象将返回 false，即使它们具有相同的属性。 JavaScript 中并没有内置按内容比较对象的 "深度 "比较操作，但可以自己编写。
+
+
+
+
+
 
 
 
