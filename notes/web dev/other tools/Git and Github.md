@@ -12,7 +12,7 @@
 
 ## 常用命令
 
-### 定位到文件夹
+### cd定位到文件夹
 
 `cd 文件夹路径`
 可以直接拖动文件夹到命令行工具
@@ -115,4 +115,18 @@ ty directory. //=>
 ## 理解常用的命令及其原理
 
 
+## 报错处理
+
+### vscode中sync changes报错
+
+报错内容:
+
+fatal: unable to access 'https://github.com/Nikkei001/Python.git/': Failed to connect to github.com port 443 after 21111 ms: Could not connect to server
+
+解决方法:
+
+terminal中输入如下命令:
+`git config --global http.proxy 127.0.0.1:2080`
+
+最后的IP地址是我使用的VPN的端口
 

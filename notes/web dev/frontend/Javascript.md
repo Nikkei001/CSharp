@@ -713,6 +713,40 @@ score = {visitors: 1, home: 1};
 ```
 使用 JavaScript 的 == 运算符比较对象时，它是通过同一性进行比较的：只有当两个对象的值完全相同时，它才会返回 true。 比较不同的对象将返回 false，即使它们具有相同的属性。 JavaScript 中并没有内置按内容比较对象的 "深度 "比较操作，但可以自己编写。
 
+### 创建对象
+
+在创建对象时，如果属性名和变量名相同，可以省略冒号和值，直接写属性名即可。
+
+具体来说，如果你有一个变量 `events`，并且你想在对象中创建一个名为 `events` 的属性，并且该属性的值就是变量 `events` 的值，你可以直接写 `events` 而不是 `events: events`。这样可以使得代码更加简洁和易读。
+
+示例
+```javascript
+let events = ["work", "touched tree", "pizza"];
+let squirrel = false;
+
+// 使用简写语法
+let entry = {events, squirrel};
+
+// 等同于
+let entry = {events: events, squirrel: squirrel};
+```
+
+### 数组方法
+
+`push/pop` => 在数组末尾添加/删除元素
+`unshift/shift` => 在数组开头添加/删除元素
+`indexOf/lastIndexOf` => 从数组开头/末尾查找元素的索引(数组索引从0开始),第二个可选参数指定从哪里开始查找
+`slice` => 提取两个索引之间的数组元素, 例如 `console.log([0, 1, 2, 3, 4].slice(2, 4));`,提取出\[2,3\], 如果第二个参数省略则提取后面的所有数组元素
+`concat` => 类似于字符串的"+"运算符, 将多个数组合并为新的数组,如果您传递的 concat 参数不是数组,那么该值将被添加到新数组中,就像它是一个单元素数组一样.
+
+### 字符串及其built-in properties
+
+字符串, 数字和布尔值都不是
+
+
+
+
+
 
 
 
