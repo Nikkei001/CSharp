@@ -129,4 +129,15 @@ terminal中输入如下命令:
 `git config --global http.proxy 127.0.0.1:2080`
 
 最后的IP地址是我使用的VPN的端口
+注意你使用的vpn变化之后,对应的端口可能会变化,命令也会随之变化
+例如
+`git config --global http.proxy 127.0.0.1:7890`
+
+解决办法2:
+检查git的代理设置
+`git config --global http.proxy`
+如果返回类似`127.0.0.1:7890`这样的结果
+运行
+`git config --global --unset http.proxy`
+
 
