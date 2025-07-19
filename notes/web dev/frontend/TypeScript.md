@@ -58,4 +58,13 @@ console.log(foundbook?.length);
 ```
 其中?.的意思是如果左边是null/undefined则会直接返回这两个,如果不是则可以当做不存在  
 ??会把null/undefined替换成默认值
+- object:
+	- 基本格式: const obj : {name: string; age: number};
+	- 可选参数: const obj : {name: string; age?: number};
+		- ?:代表某个属性是可选的
+		- 可选属性的type必须和定义的type一致
+	- 只读属性: const obj : {name: string; readonly age: number};
+		- 属性前加上readonly代表初始化object之后该属性不能被修改
+- array
+	- 
 
