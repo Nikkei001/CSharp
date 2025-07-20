@@ -66,5 +66,10 @@ console.log(foundbook?.length);
 	- 只读属性: const obj : {name: string; readonly age: number};
 		- 属性前加上readonly代表初始化object之后该属性不能被修改
 - array
-	- 
+	- 基本格式: let testarr: string\[\];
+	- union types let testarr: (string | number)\[\];
+	- 元素为对象的数组 let testarr: {name: string; age?: number}\[\];
+- functions
+	- 参数: 如果不指定参数的types会报错,建议定义函数时指定参数的类型,不要设置any或者更改tsconfig的设置
+	- 返回值(return)
 
