@@ -33,7 +33,7 @@ public class FileImporterWorker : BackgroundService
         if (next.HasValue)
         {
             var delay = next.Value - now;
-            if (delay.TotalMilliseconds <= 0)   // Check if the time has passed
+            if (delay.TotalMilliseconds <= 1)   // Check if the time has passed
             {
                 _logger.LogInformation("Scheduled task is running.");
                 ProcessFiles();
