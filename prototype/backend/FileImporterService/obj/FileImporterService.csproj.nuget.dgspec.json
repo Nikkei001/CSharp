@@ -68,6 +68,10 @@
             "Npgsql": {
               "target": "Package",
               "version": "[9.0.3, )"
+            },
+            "System.Text.Encoding.CodePages": {
+              "target": "Package",
+              "version": "[9.0.7, )"
             }
           },
           "imports": [

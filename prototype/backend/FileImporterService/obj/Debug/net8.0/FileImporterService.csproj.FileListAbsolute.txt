@@ -52,3 +52,5 @@ D:\Users\Administrator\Desktop\csharp\prototype\backend\FileImporterService\obj\
 D:\Users\Administrator\Desktop\csharp\prototype\backend\FileImporterService\obj\Debug\net8.0\FileImporterService.pdb
 D:\Users\Administrator\Desktop\csharp\prototype\backend\FileImporterService\obj\Debug\net8.0\FileImporterService.genruntimeconfig.cache
 D:\Users\Administrator\Desktop\csharp\prototype\backend\FileImporterService\obj\Debug\net8.0\ref\FileImporterService.dll
+D:\Users\Administrator\Desktop\csharp\prototype\backend\FileImporterService\bin\Debug\net8.0\System.Text.Encoding.CodePages.dll
+D:\Users\Administrator\Desktop\csharp\prototype\backend\FileImporterService\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Text.Encoding.CodePages.dll

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qpNtE35tD7wDZ7NNNdx0nl4gBB2r4Zo2d414Oxv5enJSxotgXAEqI6GBOgX1ll0dTheE4nxwcSW0PtFtiuzmug==",
+  "dgSpecHash": "p4114Ez7H/8BA2he2bFbscJiR9xKVZ4Ww/pRB7VHcSi2MqRPdNv+GLU+foK1y9Xwebp5ottcKcR/JaiCQCCjcg==",
   "success": true,
   "projectFilePath": "D:\\Users\\Administrator\\Desktop\\csharp\\prototype\\backend\\FileImporterService\\FileImporterService.csproj",
   "expectedPackageFiles": [
@@ -38,6 +38,7 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\npgsql\\9.0.3\\npgsql.9.0.3.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.0\\system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.0\\system.diagnostics.eventlog.8.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.text.encoding.codepages\\9.0.7\\system.text.encoding.codepages.9.0.7.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
   ],
