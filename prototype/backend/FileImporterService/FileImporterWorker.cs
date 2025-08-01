@@ -31,8 +31,13 @@ public class FileImporterWorker : BackgroundService
 
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        _logger.LogInformation("File Importer Worker running at: {time}", DateTimeOffset.Now);
-        _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMinutes(1)); // Check every minute
+        _logger.LogInformation("=== File Importer Worker STARTED at: {time} ===", DateTimeOffset.Now);
+        _logger.LogInformation("Source Directory: {SourceDirectory}", _settings.SourceDirectory);
+        _logger.LogInformation("Schedule: {Schedule}", _settings.Schedule);
+        _logger.LogInformation("Connection String: {ConnectionString}", _connectionString?.Substring(0, Math.Min(50, _connectionString.Length)) + "...");
+        
+        // 改为每5分钟检查一次调度
+        _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromMinutes(5));
         return Task.CompletedTask;
     }
 
@@ -41,21 +46,16 @@ public class FileImporterWorker : BackgroundService
         var now = DateTime.UtcNow;
         var next = _cronExpression.GetNextOccurrence(now);
 
-        // 添加调试信息
-        _logger.LogInformation("Current time: {CurrentTime}, Next scheduled time: {NextTime}", 
-            now.ToString("yyyy-MM-dd HH:mm:ss"), 
-            next?.ToString("yyyy-MM-dd HH:mm:ss") ?? "None");
-
         if (next.HasValue)
         {
             var delay = next.Value - now;
-            _logger.LogInformation("Time until next execution: {Delay} minutes", delay.TotalMinutes);
-            
-            // 修改触发条件：允许60秒的时间窗口
-            if (delay.TotalSeconds <= 60 && delay.TotalSeconds >= 0)
+                      
+            // 修改触发条件：允许5分钟的时间窗口（考虑到5分钟检查间隔）
+            if (delay.TotalMinutes <= 5 && delay.TotalMinutes >= 0)
             {
-                _logger.LogInformation("Scheduled task is running.");
+                _logger.LogInformation("=== SCHEDULED TASK STARTING ===");
                 await ProcessFiles();
+                _logger.LogInformation("=== SCHEDULED TASK COMPLETED ===");
             }
         }
     }
@@ -69,9 +69,11 @@ public class FileImporterWorker : BackgroundService
             // 检查源目录是否存在
             if (!Directory.Exists(_settings.SourceDirectory))
             {
-                _logger.LogError("Source directory does not exist: {SourceDirectory}", _settings.SourceDirectory);
+                _logger.LogError("❌ Source directory does not exist: {SourceDirectory}", _settings.SourceDirectory);
                 return;
             }
+
+            _logger.LogInformation("✅ Source directory exists: {SourceDirectory}", _settings.SourceDirectory);
 
             // 获取所有子文件夹
             var subDirectories = Directory.GetDirectories(_settings.SourceDirectory);
@@ -83,6 +85,10 @@ public class FileImporterWorker : BackgroundService
             }
 
             _logger.LogInformation("Found {Count} subdirectories to process.", subDirectories.Length);
+
+            var totalFilesProcessed = 0;
+            var totalFilesSucceeded = 0;
+            var totalFilesFailed = 0;
 
             // 遍历每个子文件夹
             foreach (var subDirectory in subDirectories)
@@ -108,6 +114,7 @@ public class FileImporterWorker : BackgroundService
                     // 遍历子文件夹中的每个文件
                     foreach (var file in files)
                     {
+                        totalFilesProcessed++;
                         try
                         {
                             var fileName = Path.GetFileName(file);
@@ -119,11 +126,13 @@ public class FileImporterWorker : BackgroundService
                             // 读取文件并导入数据库
                             await ImportFileToDatabase(file, fileName, subDirName);
                             
+                            totalFilesSucceeded++;
                             _logger.LogInformation("✓ Successfully processed and imported file: {FileName} in {SubDirectory}", 
                                 fileName, subDirName);
                         }
                         catch (Exception ex)
                         {
+                            totalFilesFailed++;
                             var fileName = Path.GetFileName(file);
                             _logger.LogError(ex, "✗ Failed to process file: {FileName} in {SubDirectory}. Error: {ErrorMessage}", 
                                 fileName, subDirName, ex.Message);
@@ -136,6 +145,12 @@ public class FileImporterWorker : BackgroundService
                         subDirName, ex.Message);
                 }
             }
+
+            // 输出处理总结
+            _logger.LogInformation("=== PROCESSING SUMMARY ===");
+            _logger.LogInformation("Total files processed: {TotalFiles}", totalFilesProcessed);
+            _logger.LogInformation("Successfully imported: {SuccessCount}", totalFilesSucceeded);
+            _logger.LogInformation("Failed: {FailedCount}", totalFilesFailed);
         }
         catch (Exception ex)
         {
@@ -268,20 +283,54 @@ public class FileImporterWorker : BackgroundService
             .Replace("[", "")
             .Replace("]", "")
             .Replace("/", "_")
-            .Replace("\\", "_");
+            .Replace("\\", "_")
+            .Replace("，", "_")  // 中文逗号
+            .Replace("。", "_")  // 中文句号
+            .Replace("：", "_")  // 中文冒号
+            .Replace("；", "_")  // 中文分号
+            .Replace("？", "_")  // 中文问号
+            .Replace("！", "_")  // 中文感叹号
+            .Replace("（", "_")  // 中文左括号
+            .Replace("）", "_")  // 中文右括号
+            .Replace("【", "_")  // 中文左方括号
+            .Replace("】", "_"); // 中文右方括号
             
+        // 移除或替换中文字符为拼音或英文
+        var result = new StringBuilder();
+        foreach (char c in sanitized)
+        {
+            if (char.IsLetterOrDigit(c) || c == '_')
+            {
+                result.Append(c);
+            }
+            else
+            {
+                result.Append('_');
+            }
+        }
+        
+        sanitized = result.ToString();
+        
         // 确保以字母开头
-        if (!char.IsLetter(sanitized[0]))
+        if (string.IsNullOrEmpty(sanitized) || !char.IsLetter(sanitized[0]))
             sanitized = "col_" + sanitized;
             
-        return sanitized.ToLowerInvariant();
+        // 移除连续的下划线
+        while (sanitized.Contains("__"))
+        {
+            sanitized = sanitized.Replace("__", "_");
+        }
+        
+        return sanitized.ToLowerInvariant().Trim('_');
     }
 
-    private string CreateTableName(string fileName)
+    private string GenerateCreateTableSql(string tableName, DataTable dataTable)
     {
-        var nameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
-        var sanitizedName = SanitizeColumnName(nameWithoutExtension);
-        return $"temp_{sanitizedName}";
+        var columns = dataTable.Columns.Cast<DataColumn>()
+            .Select(column => $"\"{SanitizeColumnName(column.ColumnName)}\" TEXT")
+            .ToArray();
+            
+        return $"CREATE TABLE \"{tableName}\" ({string.Join(", ", columns)})";
     }
 
     private async Task ImportDataTableToPostgres(DataTable dataTable, string tableName, string fileName)
@@ -292,7 +341,7 @@ public class FileImporterWorker : BackgroundService
         try
         {
             // 删除已存在的表
-            var dropTableSql = $"DROP TABLE IF EXISTS {tableName}";
+            var dropTableSql = $"DROP TABLE IF EXISTS \"{tableName}\"";
             using var dropCommand = new NpgsqlCommand(dropTableSql, connection);
             await dropCommand.ExecuteNonQueryAsync();
             
@@ -300,6 +349,8 @@ public class FileImporterWorker : BackgroundService
 
             // 创建表结构
             var createTableSql = GenerateCreateTableSql(tableName, dataTable);
+            _logger.LogInformation("Creating table with SQL: {CreateTableSql}", createTableSql);
+            
             using var createCommand = new NpgsqlCommand(createTableSql, connection);
             await createCommand.ExecuteNonQueryAsync();
             
@@ -307,7 +358,12 @@ public class FileImporterWorker : BackgroundService
 
             // 批量插入数据
             var insertedRows = 0;
-            using var writer = connection.BeginBinaryImport($"COPY {tableName} FROM STDIN (FORMAT BINARY)");
+            var columnNames = dataTable.Columns.Cast<DataColumn>()
+                .Select(col => $"\"{SanitizeColumnName(col.ColumnName)}\"")
+                .ToArray();
+            
+            var copyCommand = $"COPY \"{tableName}\" ({string.Join(", ", columnNames)}) FROM STDIN (FORMAT BINARY)";
+            using var writer = connection.BeginBinaryImport(copyCommand);
             
             foreach (DataRow row in dataTable.Rows)
             {
@@ -332,13 +388,11 @@ public class FileImporterWorker : BackgroundService
         }
     }
 
-    private string GenerateCreateTableSql(string tableName, DataTable dataTable)
+    private string CreateTableName(string fileName)
     {
-        var columns = dataTable.Columns.Cast<DataColumn>()
-            .Select(column => $"{column.ColumnName} TEXT")
-            .ToArray();
-            
-        return $"CREATE TABLE {tableName} ({string.Join(", ", columns)})";
+        var nameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+        var sanitizedName = SanitizeColumnName(nameWithoutExtension);
+        return $"temp_{sanitizedName}";
     }
 
     public override async Task StopAsync(CancellationToken stoppingToken)

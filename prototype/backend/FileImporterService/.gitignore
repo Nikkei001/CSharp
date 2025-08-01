@@ -1,0 +1,8 @@
+# 编译输出目录
+bin/
+obj/
+
+# Visual Studio 文件
+.vs/
+*.user
+*.suo

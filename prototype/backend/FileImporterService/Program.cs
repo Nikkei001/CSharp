@@ -8,5 +8,11 @@ builder.Services.Configure<FileImportSettings>(builder.Configuration.GetSection(
 // 注册我们的后台服务：将 FileImporterWorker 添加为托管服务
 builder.Services.AddHostedService<FileImporterWorker>();
 
+// 添加 Windows 服务支持
+builder.Services.AddWindowsService(options =>
+{
+    options.ServiceName = "FileImporterService";
+});
+
 var host = builder.Build();
 host.Run();
