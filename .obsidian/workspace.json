@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/web dev/frontend/LIT.md",
+                "file": "notes/web dev/other tools/Git and Github.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LIT"
+              "title": "Git and Github"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "d55d488c63d363b0",
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notes/web dev/frontend/TypeScript.md",
+                "file": "notes/web dev/other tools/Git and Github.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for TypeScript"
+              "title": "Backlinks for Git and Github"
             }
           },
           {
@@ -142,21 +142,21 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/web dev/frontend/TypeScript.md",
+                "file": "notes/web dev/other tools/Git and Github.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of TypeScript"
+              "title": "Outline of Git and Github"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -168,13 +168,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2fdc007b61bfb7e1",
+  "active": "35ca2f2956a438e7",
   "lastOpenFiles": [
+    "notes/web dev/frontend/LIT.md",
+    "notes/web dev/frontend/JavaScript NEW_EDITION.md",
+    "notes/web dev/frontend/React.md",
     "notes/web dev/frontend/TypeScript.md",
     "notes/web dev/frontend/Javascript.md",
-    "notes/web dev/frontend/LIT.md",
-    "notes/web dev/frontend/React.md",
-    "notes/web dev/frontend/JavaScript NEW_EDITION.md",
     "notes/web dev/other tools/Git and Github.md"
   ]
 }
