@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "frontend/LIT.md",
+                "file": "other tools/Git and Github.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LIT"
+              "title": "Git and Github"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "frontend/LIT.md",
+                "file": "other tools/Git and Github.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of LIT"
+              "title": "Outline of Git and Github"
             }
           }
         ],
@@ -168,8 +168,8 @@
   },
   "active": "e5b0b11abfe90a0c",
   "lastOpenFiles": [
-    "frontend/JavaScript NEW_EDITION.md",
     "frontend/LIT.md",
+    "frontend/JavaScript NEW_EDITION.md",
     "frontend/Javascript.md",
     "other tools/Git and Github.md",
     "Python(backend)/02-FastAPI.md",
