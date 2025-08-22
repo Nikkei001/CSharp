@@ -1,3 +1,5 @@
+# 启动TypeScript项目
+
 - 安装node,下载x64版本  
 - 在vscode终端打开cmd终端,node -v,npm -v检查是否安装  
 - 安装vite并创建ts模版,npm create vite@latest typescript -- --template vanilla-ts  
@@ -20,7 +22,10 @@
 - npm run build会编译我们写的ts/tsx代码,编译后的js文件存放在新出现的dist文件夹中  
 - npm run dev,即使代码中有类型错误,项目也不会报错,改用npm run build则会报错  
 - 运行npm run dev后,需要按ctrl+c终止当前运行的进程,然后再输入npm run build则会观察到报错 
-- npm run dev是本地运行,npm run build是部署项目  
+- npm run dev是本地运行,npm run build是部署项目
+
+# 基本数据类型
+
 - union type, literal value type, 陌生的是literal value type, 也就是字面量值类型, 可以和union type结合, 例如
 ```typescript
 let status: "success" | "failed";  
@@ -72,4 +77,6 @@ console.log(foundbook?.length);
 - functions
 	- 参数: 如果不指定参数的types会报错,建议定义函数时指定参数的类型,不要设置any或者更改tsconfig的设置
 	- 返回值(return)
+
+
 
