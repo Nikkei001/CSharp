@@ -203,6 +203,10 @@ export class MyElement extends LitElement {
 9. 其他依赖 this.checked 的元素也会更新
    (比如 ?disabled=${!this.checked} 的输入框)
 ```
+为什么要使用类型断言
+
+
+
 
 
 

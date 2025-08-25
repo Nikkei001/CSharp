@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Basics/如何测试一个网站.md",
+                "file": "frontend/LIT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "如何测试一个网站"
+              "title": "LIT"
             }
           }
         ]
@@ -140,13 +140,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Basics/如何测试一个网站.md",
+                "file": "frontend/LIT.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 如何测试一个网站"
+              "title": "Outline of LIT"
             }
           }
         ],
@@ -171,12 +171,12 @@
   "lastOpenFiles": [
     "Basics/如何部署一个网站.md",
     "Basics/如何测试一个网站.md",
+    "Web Development.base",
     "frontend/LIT.md",
     "Basics",
     "frontend/TypeScript.md",
     "frontend/JavaScript NEW_EDITION.md",
     "C Sharp(backend)/CSharp Basics.md",
-    "Web Development.base",
     "other tools/Git and Github.md",
     "frontend/Javascript.md",
     "Python(backend)/02-FastAPI.md",
@@ -198,7 +198,6 @@
     "temporary documents",
     "Templates/folding with code.md",
     "Python(backend)",
-    "Methods.md",
     "Debug",
     "CodingWithAI",
     "other tools",
