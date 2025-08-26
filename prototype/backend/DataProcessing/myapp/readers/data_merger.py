@@ -19,7 +19,7 @@ def merge_and_save_data(all_filtered_data: list, output_path: str):
     # 确保拼接的列都是字符串类型，避免混合类型的错误
     combined_df['合并列'] = combined_df['产品编号'].astype(str) + \
                            combined_df['站点'].astype(str) + \
-                           combined_df['销售'].astype(str)
+                           combined_df['区域'].astype(str)
 
     print("正在整理最终的列...")
     final_df = combined_df[['辅助列-排序', '合并列', '销售确认发货']]
