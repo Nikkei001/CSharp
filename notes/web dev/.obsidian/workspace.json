@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Basics/服务器和客户端的交互.md",
+                "file": "frontend/LIT.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "服务器和客户端的交互"
+              "title": "LIT"
             }
           }
         ],
@@ -155,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Basics/服务器和客户端的交互.md",
+                "file": "frontend/LIT.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 服务器和客户端的交互"
+              "title": "Outline of LIT"
             }
           }
         ],
@@ -184,8 +184,8 @@
   },
   "active": "8e0450333ba63bb6",
   "lastOpenFiles": [
-    "Web Development.base",
     "Basics/服务器和客户端的交互.md",
+    "Web Development.base",
     "Python(backend)/00-WebBasics.md",
     "Python(backend)/03-UV.md",
     "frontend/LIT.md",
