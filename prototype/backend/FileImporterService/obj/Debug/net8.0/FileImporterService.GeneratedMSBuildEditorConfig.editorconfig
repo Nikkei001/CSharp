@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FileImporterService
-build_property.ProjectDir = d:\Users\Administrator\Desktop\csharp\prototype\backend\FileImporterService\
+build_property.ProjectDir = D:\Users\Administrator\Desktop\CSharp\prototype\backend\FileImporterService\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

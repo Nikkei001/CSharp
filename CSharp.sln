@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "prototype", "prototype", "{8FC2DB39-E299-4E81-B2BF-6D1DC7766929}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{ACAD1CCD-754F-4E3D-9560-A30266653346}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileImporterService", "prototype\backend\FileImporterService\FileImporterService.csproj", "{3A5A0D63-BAA3-41CA-9407-7B9B93CA838F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A5A0D63-BAA3-41CA-9407-7B9B93CA838F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A5A0D63-BAA3-41CA-9407-7B9B93CA838F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A5A0D63-BAA3-41CA-9407-7B9B93CA838F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A5A0D63-BAA3-41CA-9407-7B9B93CA838F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ACAD1CCD-754F-4E3D-9560-A30266653346} = {8FC2DB39-E299-4E81-B2BF-6D1DC7766929}
+		{3A5A0D63-BAA3-41CA-9407-7B9B93CA838F} = {ACAD1CCD-754F-4E3D-9560-A30266653346}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F687E675-ABEA-422A-BCC2-BDCD803EFBEE}
+	EndGlobalSection
+EndGlobal

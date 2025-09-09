@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\Administrator\\Desktop\\csharp\\prototype\\backend\\FileImporterService\\FileImporterService.csproj": {}
+    "D:\\Users\\Administrator\\Desktop\\CSharp\\prototype\\backend\\FileImporterService\\FileImporterService.csproj": {}
   },
   "projects": {
-    "D:\\Users\\Administrator\\Desktop\\csharp\\prototype\\backend\\FileImporterService\\FileImporterService.csproj": {
+    "D:\\Users\\Administrator\\Desktop\\CSharp\\prototype\\backend\\FileImporterService\\FileImporterService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\Administrator\\Desktop\\csharp\\prototype\\backend\\FileImporterService\\FileImporterService.csproj",
+        "projectUniqueName": "D:\\Users\\Administrator\\Desktop\\CSharp\\prototype\\backend\\FileImporterService\\FileImporterService.csproj",
         "projectName": "FileImporterService",
-        "projectPath": "D:\\Users\\Administrator\\Desktop\\csharp\\prototype\\backend\\FileImporterService\\FileImporterService.csproj",
+        "projectPath": "D:\\Users\\Administrator\\Desktop\\CSharp\\prototype\\backend\\FileImporterService\\FileImporterService.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\Administrator\\Desktop\\csharp\\prototype\\backend\\FileImporterService\\obj\\",
+        "outputPath": "D:\\Users\\Administrator\\Desktop\\CSharp\\prototype\\backend\\FileImporterService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
