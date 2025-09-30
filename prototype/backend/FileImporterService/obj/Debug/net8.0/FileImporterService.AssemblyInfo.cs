@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FileImporterService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ced699f286cb90318c579d8998123d4b1858c47")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bc190ad6d38f4465ac6357f1cace0cefa4b97047")]
 [assembly: System.Reflection.AssemblyProductAttribute("FileImporterService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FileImporterService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
